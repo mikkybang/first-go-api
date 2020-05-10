@@ -16,7 +16,9 @@ func home(w http.ResponseWriter, r *http.Request){
 		w.WriteHeader(http.StatusCreated)
 		w.Write([]byte(`{"message": "post called"}`))
 	case "PUT":
-		w.Write
+		w.WriteHeader(http.StatusAccepted)
+		w.Write([]byte(`{"message": "put called"}`))
+	case ""
 	}
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`{"message": "hello world"}`))
