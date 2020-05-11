@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
+	"github.com/gorilla/mux"
+
 )
 
 
@@ -18,10 +20,13 @@ func home(w http.ResponseWriter, r *http.Request){
 	case "PUT":
 		w.WriteHeader(http.StatusAccepted)
 		w.Write([]byte(`{"message": "put called"}`))
-	case ""
+	case "DELETE":
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"message": "delete called"}`))
+	default:
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(`{"message": "not found"}`))
 	}
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(`{"message": "hello world"}`))
 }
 
 func main(){
