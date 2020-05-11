@@ -24,16 +24,16 @@ func put(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`{"message": "put called"}`))
 }
 
-func delete(w http.ResponseWriter, r *http.Request){
+func delete(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`{"message": "delete called"}`))
 }
 
 func notFound(w http.ResponseWriter, r *http.Request) {
-    w.Header().Set("Content-Type", "application/json")
-    w.WriteHeader(http.StatusNotFound)
-    w.Write([]byte(`{"message": "not found"}`))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusNotFound)
+	w.Write([]byte(`{"message": "not found"}`))
 }
 
 func main() {
@@ -43,5 +43,5 @@ func main() {
 	r.HandleFunc("/", put).Methods(http.MethodPut)
 	r.HandleFunc("/", delete).Methods(http.MethodDelete)
 	r.HandleFunc("/", notFound)
-	log.Fatal(http.ListenAndServe(":7070", nil))
+	log.Fatal(http.ListenAndServe(":7070", r))
 }
