@@ -30,6 +30,7 @@ func home(w http.ResponseWriter, r *http.Request){
 }
 
 func main(){
-	http.HandleFunc("/", home)
+	r := mux.NewRouter()
+	r.HandleFunc("/", home)
 	log.Fatal(http.ListenAndServe(":7070", nil))
 }
